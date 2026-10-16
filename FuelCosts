@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        double gallons;
+        double milesPerGallon;
+        double pricePerGallon;
+
+        do {
+            System.out.print("Enter gallons of gas in the tank: ");
+            while (!input.hasNextDouble()) {
+                System.out.println("Invalid input. Enter a number.");
+                input.next();
+                System.out.print("Enter gallons of gas in the tank: ");
+            }
+            gallons = input.nextDouble();
+        } while (gallons < 0);
+
+        do {
+            System.out.print("Enter fuel efficiency (miles per gallon): ");
+            while (!input.hasNextDouble()) {
+                System.out.println("Invalid input. Enter a number.");
+                input.next();
+                System.out.print("Enter fuel efficiency (miles per gallon): ");
+            }
+            milesPerGallon = input.nextDouble();
+        } while (milesPerGallon <= 0);
+
+        do {
+            System.out.print("Enter price of gas per gallon: ");
+            while (!input.hasNextDouble()) {
+                System.out.println("Invalid input. Enter a number.");
+                input.next();
+                System.out.print("Enter price of gas per gallon: ");
+            }
+            pricePerGallon = input.nextDouble();
+        } while (pricePerGallon < 0);
+
+        double costToDrive100Miles = (100.0 / milesPerGallon) * pricePerGallon;
+        double distance = gallons * milesPerGallon;
+
+        System.out.println("Cost to drive 100 miles: $" + costToDrive100Miles);
+        System.out.println("Distance with a full tank: " + distance + " miles");
+
+        input.close();
+    }
+}
